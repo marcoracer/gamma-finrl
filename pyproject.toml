@@ -1,0 +1,55 @@
+[project]
+name = "gamma-finrl"
+version = "0.1.0"
+description = "FinRL-based quantitative portfolio optimization with validated Gamma Fenix strategies"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "finrl",
+    "stable-baselines3>=2.5",
+    "sb3-contrib>=2.5",
+    "optuna>=4.0",
+    "yfinance>=0.2",
+    "quantstats>=0.0.81",
+    "stockstats>=0.6",
+    "pyyaml>=6.0",
+    "seaborn>=0.13",
+    "alpaca-py>=0.43.2",
+    "alpaca-trade-api>=3.2.0",
+    "exchange-calendars>=4.13.2",
+    "wrds>=3.5.0",
+    "joblib>=1.5.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.11",
+    "jupyter>=1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "RUF",  # ruff-specific
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-v --tb=short"
